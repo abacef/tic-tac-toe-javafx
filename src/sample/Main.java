@@ -10,12 +10,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("MethodOfGameplay.fxml"));
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gameStyle.fxml"));
         Parent root = loader.load();
+        Scene scene = new Scene(root, 300, 400);
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Select Gameplay Method");
-        primaryStage.setScene(new Scene(root, 300, 400));
         primaryStage.show();
     }
 
