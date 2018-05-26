@@ -10,8 +10,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource
-                ("methodOfGameplay.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("MethodOfGameplay.fxml"));
+
+        Parent root = loader.load();
         primaryStage.setTitle("Select Gameplay Method");
         primaryStage.setScene(new Scene(root, 300, 400));
         primaryStage.show();
