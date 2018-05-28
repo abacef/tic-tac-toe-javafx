@@ -1,8 +1,3 @@
-# Build/Maven #
-###############
-**/target/
-
-
 # Eclipse #
 ###########
 .project
@@ -11,15 +6,8 @@
 **/bin/
 .metadata/
 
-
 # IntelliJ #
 ############
 .idea/
 *.iml
 out/
-
-# vim #
-#######
-*.swp
-*.swo
-*~
