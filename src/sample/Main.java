@@ -8,8 +8,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static Stage firstStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        firstStage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameStyle.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 400);
