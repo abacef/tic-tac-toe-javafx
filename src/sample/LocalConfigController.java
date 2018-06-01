@@ -3,11 +3,10 @@ package sample;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class LocalConfigController {
 
@@ -28,6 +27,12 @@ public class LocalConfigController {
 
     @FXML
     private RadioButton o2;
+
+    @FXML
+    private Button cancel;
+
+    @FXML
+    private Button ok;
 
     @FXML
     private void initialize() {
@@ -59,5 +64,20 @@ public class LocalConfigController {
                         x1.setSelected(true);
                     }
                 });
+
+        cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) cancel.getScene().getWindow();
+                stage.close();
+            }
+        });
+
+        ok.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+            }
+        });
     }
 }
