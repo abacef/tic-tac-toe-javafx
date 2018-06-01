@@ -6,9 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-public class LocalConfigController {
+public class HLocalController {
 
     @FXML
     private TextField player1;
@@ -34,6 +33,8 @@ public class LocalConfigController {
     @FXML
     private Button ok;
 
+    private boolean player1IsX;
+
     @FXML
     private void initialize() {
         ToggleGroup group1 = new ToggleGroup();
@@ -48,9 +49,11 @@ public class LocalConfigController {
                     if (new_toggle.toString().charAt(15) == 'x' &&
                             new_toggle.toString().charAt(16) == '1') {
                         o2.setSelected(true);
+                        player1IsX = true;
                     }
                     else {
                         x2.setSelected(true);
+                        player1IsX = false;
                     }
                 });
         group2.selectedToggleProperty().addListener(
@@ -72,12 +75,21 @@ public class LocalConfigController {
                 stage.close();
             }
         });
+    }
 
-        ok.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+    public Button getOKButton() {
+        return ok;
+    }
 
-            }
-        });
+    public String getPlayer1Name() {
+        return player1.getText();
+    }
+
+    public String getPlayer2Name() {
+        return player2.getText();
+    }
+
+    public boolean getPlayer1IsX() {
+        return player1IsX;
     }
 }

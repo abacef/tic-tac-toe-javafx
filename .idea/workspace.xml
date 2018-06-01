@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/LocalConfigController.java" afterPath="$PROJECT_DIR$/src/sample/HLocalController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/hLocalConfig.fxml" afterPath="$PROJECT_DIR$/src/sample/hLocal.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/LocalConfigController.java" afterPath="$PROJECT_DIR$/src/sample/LocalConfigController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/hLocalConfig.fxml" afterPath="$PROJECT_DIR$/src/sample/hLocalConfig.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/GameStyleController.java" afterPath="$PROJECT_DIR$/src/sample/GameStyleController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,8 +76,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hLocalConfig.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/hLocalConfig.fxml">
+      <file leaf-file-name="hLocal.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/hLocal.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
@@ -88,29 +89,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameStyleController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameStyleController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GameStyleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state relative-caret-position="256">
+              <caret line="64" column="69" lean-forward="false" selection-start-line="64" selection-start-column="69" selection-end-line="64" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1464#1465#0" expanded="true" />
-                <element signature="e#1522#1523#0" expanded="true" />
-                <element signature="e#1676#1677#0" expanded="true" />
-                <element signature="e#1734#1735#0" expanded="true" />
+                <element signature="e#2923#2924#0" expanded="true" />
+                <element signature="e#2981#2982#0" expanded="true" />
+                <element signature="e#3135#3136#0" expanded="true" />
+                <element signature="e#3193#3194#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalConfigController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/LocalConfigController.java">
+      <file leaf-file-name="HLocalController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HLocalController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state relative-caret-position="147">
+              <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2242#2243#0" expanded="true" />
+                <element signature="e#2267#2268#0" expanded="true" />
+                <element signature="e#2305#2306#0" expanded="true" />
+                <element signature="e#2345#2346#0" expanded="true" />
+                <element signature="e#2383#2384#0" expanded="true" />
+                <element signature="e#2423#2424#0" expanded="true" />
+                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#2494#2495#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,10 +165,11 @@
         <option value="$PROJECT_DIR$/src/sample/gameStyle.fxml" />
         <option value="$PROJECT_DIR$/src/sample/gameplay.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/GameStyleController.java" />
         <option value="$PROJECT_DIR$/.gitignore.txt" />
         <option value="$PROJECT_DIR$/src/sample/hLocalConfig.fxml" />
         <option value="$PROJECT_DIR$/src/sample/LocalConfigController.java" />
+        <option value="$PROJECT_DIR$/src/sample/HLocalController.java" />
+        <option value="$PROJECT_DIR$/src/sample/GameStyleController.java" />
       </list>
     </option>
   </component>
@@ -385,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527372087046</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="OK and cancel buttons added. Cancel button closes window">
+      <created>1527812743548</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1527812743549</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -457,14 +474,15 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Dont know why it does not work!!! It should though." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dont know why it does not work!!! It should though." />
+    <MESSAGE value="OK and cancel buttons added. Cancel button closes window" />
+    <option name="LAST_COMMIT_MESSAGE" value="OK and cancel buttons added. Cancel button closes window" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/LocalConfigController.java</url>
-          <line>47</line>
+          <url>file://$PROJECT_DIR$/src/sample/HLocalController.java</url>
+          <line>48</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -547,6 +565,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -563,15 +582,15 @@
           <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#2981#2982#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3193#3194#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/hLocalConfig.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/hLocal.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -582,17 +601,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/LocalConfigController.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/HLocalController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2242#2243#0" expanded="true" />
+            <element signature="e#2267#2268#0" expanded="true" />
+            <element signature="e#2305#2306#0" expanded="true" />
+            <element signature="e#2345#2346#0" expanded="true" />
+            <element signature="e#2383#2384#0" expanded="true" />
+            <element signature="e#2423#2424#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/hLocalConfig.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/hLocal.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -616,10 +643,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#2981#2982#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3193#3194#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -675,28 +702,6 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/MethodOfGameplayController.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/MethodOfGameplay.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GameStyleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore.txt" />
     <entry file="file://$PROJECT_DIR$/src/sample/gamePlay.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -720,7 +725,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/hLocalConfig.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/hLocal.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -731,12 +736,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/LocalConfigController.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HLocalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2242#2243#0" expanded="true" />
+            <element signature="e#2267#2268#0" expanded="true" />
+            <element signature="e#2305#2306#0" expanded="true" />
+            <element signature="e#2345#2346#0" expanded="true" />
+            <element signature="e#2383#2384#0" expanded="true" />
+            <element signature="e#2423#2424#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GameStyleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="64" column="69" lean-forward="false" selection-start-line="64" selection-start-column="69" selection-end-line="64" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#2981#2982#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3193#3194#0" expanded="true" />
           </folding>
         </state>
       </provider>
