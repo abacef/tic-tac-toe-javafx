@@ -51,20 +51,22 @@ public class GameStyleController {
                     lcc.getOKButton().setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            player1 = lcc.getPlayer1Name();
-                            if (player1.equals("")) {
+                            if (lcc.getPlayer1Name().equals("")) {
                                 new Alert(Alert.AlertType.ERROR,
                                         "Please enter a name for player 1",
                                         ButtonType.OK).showAndWait();
                                 return;
                             }
-                            player2 = lcc.getPlayer2Name();
-                            if (player2.equals("")) {
+                            player1 = lcc.getPlayer1Name();
+
+                            if (lcc.getPlayer2Name().equals("")) {
                                 new Alert(Alert.AlertType.ERROR,
                                         "Please enter a name for player 2",
                                         ButtonType.OK).showAndWait();
                                 return;
                             }
+                            player2 = lcc.getPlayer2Name();
+
                             player1IsX = lcc.getPlayer1IsX();
 
                             stage.close();

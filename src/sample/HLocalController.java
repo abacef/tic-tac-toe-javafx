@@ -16,16 +16,10 @@ public class HLocalController {
     private TextField player2;
 
     @FXML
-    private RadioButton x1;
+    private RadioButton xRadio;
 
     @FXML
-    private RadioButton o1;
-
-    @FXML
-    private RadioButton x2;
-
-    @FXML
-    private RadioButton o2;
+    private RadioButton oRadio;
 
     @FXML
     private Button cancel;
@@ -33,41 +27,12 @@ public class HLocalController {
     @FXML
     private Button ok;
 
+    private ToggleGroup group;
+
     private boolean player1IsX;
 
     @FXML
     private void initialize() {
-        ToggleGroup group1 = new ToggleGroup();
-        ToggleGroup group2 = new ToggleGroup();
-        x1.setToggleGroup(group1);
-        o1.setToggleGroup(group1);
-        x2.setToggleGroup(group2);
-        o2.setToggleGroup(group2);
-        group1.selectedToggleProperty().addListener(
-                (ObservableValue<? extends Toggle> ov, Toggle old_toggle,
-                 Toggle new_toggle) -> {
-                    if (new_toggle.toString().charAt(15) == 'x' &&
-                            new_toggle.toString().charAt(16) == '1') {
-                        o2.setSelected(true);
-                        player1IsX = true;
-                    }
-                    else {
-                        x2.setSelected(true);
-                        player1IsX = false;
-                    }
-                });
-        group2.selectedToggleProperty().addListener(
-                (ObservableValue<? extends Toggle> ov, Toggle old_toggle,
-                 Toggle new_toggle) -> {
-                    if (new_toggle.toString().charAt(15) == 'x' &&
-                            new_toggle.toString().charAt(16) == '2') {
-                        o1.setSelected(true);
-                    }
-                    else {
-                        x1.setSelected(true);
-                    }
-                });
-
         cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -75,6 +40,14 @@ public class HLocalController {
                 stage.close();
             }
         });
+        group = new ToggleGroup();
+
+        xRadio.setToggleGroup(group);
+        xRadio.setUserData("x");
+        xRadio.setSelected(true);
+
+        oRadio.setToggleGroup(group);
+        oRadio.setUserData("o");
     }
 
     public Button getOKButton() {
@@ -90,6 +63,6 @@ public class HLocalController {
     }
 
     public boolean getPlayer1IsX() {
-        return player1IsX;
+        return group.getSelectedToggle().getUserData().equals("x");
     }
 }
