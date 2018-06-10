@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -28,8 +27,6 @@ public class HLocalController {
     private Button ok;
 
     private ToggleGroup group;
-
-    private boolean player1IsX;
 
     @FXML
     private void initialize() {

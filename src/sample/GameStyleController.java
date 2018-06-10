@@ -30,10 +30,16 @@ public class GameStyleController {
 
     private boolean player1IsX;
 
-    private final Alert emptyNameAlert = new Alert(Alert.AlertType.ERROR,
-            "You put in too long of a name", ButtonType.OK);
+    private final Alert player1EmptyAlert = new Alert(Alert.AlertType.ERROR,
+            "Please enter a name for player 1",
+            ButtonType.OK);
 
-    public void initialize() {
+    private final Alert player2EmptyAlert = new Alert(Alert.AlertType.ERROR,
+            "Please enter a name for player 2",
+            ButtonType.OK);
+
+    @FXML
+    private void initialize() {
         hLocal.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -52,17 +58,13 @@ public class GameStyleController {
                         @Override
                         public void handle(MouseEvent event) {
                             if (lcc.getPlayer1Name().equals("")) {
-                                new Alert(Alert.AlertType.ERROR,
-                                        "Please enter a name for player 1",
-                                        ButtonType.OK).showAndWait();
+                                player1EmptyAlert.showAndWait();
                                 return;
                             }
                             player1 = lcc.getPlayer1Name();
 
                             if (lcc.getPlayer2Name().equals("")) {
-                                new Alert(Alert.AlertType.ERROR,
-                                        "Please enter a name for player 2",
-                                        ButtonType.OK).showAndWait();
+                                player2EmptyAlert.showAndWait();
                                 return;
                             }
                             player2 = lcc.getPlayer2Name();
