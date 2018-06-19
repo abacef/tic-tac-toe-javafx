@@ -5,9 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -73,9 +71,18 @@ public class GameStyleController {
         });
     }
 
-    public void startGame(String player1, String player2, boolean player1IsX) {
+    public void startLocalGame(String player1, String player2, boolean
+            player1IsX) {
         this.player1 = player1;
         this.player2 = player2;
         this.player1IsX = player1IsX;
+    }
+
+    public void startComputerGame() {
+
+    }
+
+    public void startNetworkedGame() {
+
     }
 }

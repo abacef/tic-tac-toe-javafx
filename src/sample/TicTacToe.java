@@ -15,7 +15,7 @@ public class TicTacToe extends Application {
         firstStage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gameStyle.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 300, 400);
+        Scene scene = new Scene(root, 350, 400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Select Gameplay Method");
         primaryStage.centerOnScreen();

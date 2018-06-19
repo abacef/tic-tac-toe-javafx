@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class HLocalController {
@@ -71,8 +70,8 @@ public class HLocalController {
                     return;
                 }
 
-                parent.startGame(player1.getText(), player2.getText(), group
-                        .getSelectedToggle().getUserData().equals("x"));
+                parent.startLocalGame(player1.getText(), player2.getText(),
+                        group.getSelectedToggle().getUserData().equals("x"));
 
                 Stage stage = (Stage)ok.getScene().getWindow();
                 stage.close();
