@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,19 +31,11 @@ public class GameStyleController {
 
     private boolean player1IsX;
 
-    private final Alert player1EmptyAlert = new Alert(Alert.AlertType.ERROR,
-            "Please enter a name for player 1",
-            ButtonType.OK);
-
-    private final Alert player2EmptyAlert = new Alert(Alert.AlertType.ERROR,
-            "Please enter a name for player 2",
-            ButtonType.OK);
-
     @FXML
     private void initialize() {
-        hLocal.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        hLocal.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(ActionEvent event) {
                 System.out.println("hloc");
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource
@@ -51,29 +44,13 @@ public class GameStyleController {
                     stage.setTitle("2 Player Configuration");
                     stage.setScene(new Scene(loader.load(), 300, 300));
                     stage.initModality(Modality.WINDOW_MODAL);
-                    stage.initOwner(Main.firstStage);
-                    stage.show();
-                    HLocalController lcc = loader.getController();
-                    lcc.getOKButton().setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            if (lcc.getPlayer1Name().equals("")) {
-                                player1EmptyAlert.showAndWait();
-                                return;
-                            }
-                            player1 = lcc.getPlayer1Name();
+                    stage.initOwner(TicTacToe.firstStage);
+                    stage.centerOnScreen();
 
-                            if (lcc.getPlayer2Name().equals("")) {
-                                player2EmptyAlert.showAndWait();
-                                return;
-                            }
-                            player2 = lcc.getPlayer2Name();
+                    HLocalController controller = loader.getController();
+                    controller.setParent(GameStyleController.this);
 
-                            player1IsX = lcc.getPlayer1IsX();
-
-                            stage.close();
-                        }
-                    });
+                    stage.showAndWait();
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -94,5 +71,11 @@ public class GameStyleController {
                 System.out.println("comp");
             }
         });
+    }
+
+    public void startGame(String player1, String player2, boolean player1IsX) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.player1IsX = player1IsX;
     }
 }
