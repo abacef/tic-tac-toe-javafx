@@ -13,26 +13,26 @@
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="270.0">
          <children>
-            <Label alignment="CENTER" text="Label" />
+            <Label fx:id="yourName" alignment="CENTER" text="Your Name" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" text="Partner Host" />
-            <TextField />
+            <TextField fx:id="partnerHost" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" text="Partner Port" />
-            <TextField />
+            <TextField fx:id="partnerPort" />
          </children>
       </HBox>
       <FlowPane prefHeight="200.0" prefWidth="200.0" />
       <HBox alignment="BOTTOM_RIGHT" prefHeight="11.0" prefWidth="270.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="75.0" text="Cancel" />
-            <Button mnemonicParsing="false" prefWidth="75.0" text="Connect" />
+            <Button fx:id="cancel" mnemonicParsing="false" prefWidth="75.0" text="Cancel" />
+            <Button fx:id="connect" mnemonicParsing="false" prefWidth="75.0" text="Connect" />
          </children>
       </HBox>
    </children>
