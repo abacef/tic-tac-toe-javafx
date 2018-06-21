@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,7 +39,6 @@ public class HLocalController {
     @FXML
     private void initialize() {
         cancel.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
             public void handle(ActionEvent event) {
                 Stage stage = (Stage) cancel.getScene().getWindow();
                 stage.close();
@@ -58,7 +55,6 @@ public class HLocalController {
         oRadio.setUserData("o");
 
         ok.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
             public void handle(ActionEvent event) {
                 if (player1.getText().equals("")) {
                     player1EmptyAlert.showAndWait();
