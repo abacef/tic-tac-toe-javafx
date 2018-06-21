@@ -61,14 +61,14 @@ public class GameStyleController {
             }
         });
 
-        hOnline.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
+        hOnline.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
                 System.out.println("honl");
             }
         });
 
-        computer.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
+        computer.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
                 System.out.println("comp");
             }
         });
