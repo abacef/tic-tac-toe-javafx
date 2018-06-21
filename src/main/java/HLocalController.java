@@ -38,11 +38,10 @@ public class HLocalController {
 
     @FXML
     private void initialize() {
-        cancel.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
+        cancel.setOnAction((event) -> {
                 Stage stage = (Stage) cancel.getScene().getWindow();
+                stage.setTitle("X");
                 stage.close();
-            }
         });
 
         group = new ToggleGroup();
@@ -66,16 +65,21 @@ public class HLocalController {
                     return;
                 }
 
-                parent.startLocalGame(player1.getText(), player2.getText(),
-                        group.getSelectedToggle().getUserData().equals("x"));
-
                 Stage stage = (Stage)ok.getScene().getWindow();
                 stage.close();
             }
         });
     }
 
-    public void setParent(GameStyleController parent) {
-        this.parent = parent;
+    public String getPlayer1() {
+        return player1.getText();
+    }
+
+    public String getPlayer2() {
+        return player2.getText();
+    }
+
+    public boolean getPlayer1IsX() {
+        return group.getSelectedToggle().getUserData().equals("x");
     }
 }
