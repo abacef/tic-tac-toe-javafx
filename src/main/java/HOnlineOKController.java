@@ -15,19 +15,17 @@ public class HOnlineOKController {
     @FXML
     private Button cancel;
 
-    private GameStyleController parent;
-
     @FXML
     private void initialize() {
         cancel.setOnAction(event -> {
             Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.setTitle("X");
             stage.close();
         });
 
         ok.setOnAction(event -> {
             Stage stage = (Stage) ok.getScene().getWindow();
-            parent.startNetworkedGameNumber1(name.getText());
+            stage.setTitle("X");
+            stage.close();
         });
     }
 

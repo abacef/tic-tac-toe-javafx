@@ -7,7 +7,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="300.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="305.0" prefWidth="300.0"
+      spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="HOnlineConnectController">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="270.0">
          <children>
@@ -34,7 +37,7 @@
       </HBox>
       <HBox prefHeight="43.0" prefWidth="270.0">
          <children>
-            <Label text="Your Port" />
+            <Label text="Your Port:" />
             <Label />
          </children>
       </HBox>

@@ -38,7 +38,6 @@ public class HLocalController {
     private void initialize() {
         cancel.setOnAction(event -> {
             Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.setTitle("X");
             stage.close();
         });
 
@@ -63,6 +62,7 @@ public class HLocalController {
             }
 
             Stage stage = (Stage)ok.getScene().getWindow();
+            stage.setTitle("X");
             stage.close();
         });
     }
