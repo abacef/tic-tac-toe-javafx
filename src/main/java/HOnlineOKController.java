@@ -1,5 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,19 +19,15 @@ public class HOnlineOKController {
 
     @FXML
     private void initialize() {
-        cancel.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                Stage stage = (Stage) cancel.getScene().getWindow();
-                stage.setTitle("X");
-                stage.close();
-            }
+        cancel.setOnAction(event -> {
+            Stage stage = (Stage) cancel.getScene().getWindow();
+            stage.setTitle("X");
+            stage.close();
         });
 
-        ok.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                Stage stage = (Stage) ok.getScene().getWindow();
-                parent.startNetworkedGameNumber1(name.getText());
-            }
+        ok.setOnAction(event -> {
+            Stage stage = (Stage) ok.getScene().getWindow();
+            parent.startNetworkedGameNumber1(name.getText());
         });
     }
 

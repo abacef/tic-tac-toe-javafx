@@ -1,5 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -38,10 +36,10 @@ public class HLocalController {
 
     @FXML
     private void initialize() {
-        cancel.setOnAction((event) -> {
-                Stage stage = (Stage) cancel.getScene().getWindow();
-                stage.setTitle("X");
-                stage.close();
+        cancel.setOnAction(event -> {
+            Stage stage = (Stage) cancel.getScene().getWindow();
+            stage.setTitle("X");
+            stage.close();
         });
 
         group = new ToggleGroup();
@@ -53,21 +51,19 @@ public class HLocalController {
         oRadio.setToggleGroup(group);
         oRadio.setUserData("o");
 
-        ok.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if (player1.getText().equals("")) {
-                    player1EmptyAlert.showAndWait();
-                    return;
-                }
-
-                if (player2.getText().equals("")) {
-                    player2EmptyAlert.showAndWait();
-                    return;
-                }
-
-                Stage stage = (Stage)ok.getScene().getWindow();
-                stage.close();
+        ok.setOnAction(event -> {
+            if (player1.getText().equals("")) {
+                player1EmptyAlert.showAndWait();
+                return;
             }
+
+            if (player2.getText().equals("")) {
+                player2EmptyAlert.showAndWait();
+                return;
+            }
+
+            Stage stage = (Stage)ok.getScene().getWindow();
+            stage.close();
         });
     }
 

@@ -1,5 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,78 +34,72 @@ public class GameStyleController {
 
     @FXML
     private void initialize() {
-        hLocal.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource
-                            ("fxml/hLocal.fxml"));
-                    Stage stage = new Stage();
-                    stage.setTitle("2 Player Configuration");
-                    Parent root = loader.load();
-                    stage.setScene(new Scene(root, 300, 300));
-                    stage.initModality(Modality.WINDOW_MODAL);
-                    stage.initOwner(TicTacToe.firstStage);
-                    stage.centerOnScreen();
+        hLocal.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource
+                        ("fxml/hLocal.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("2 Player Configuration");
+                Parent root = loader.load();
+                stage.setScene(new Scene(root, 300, 300));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(TicTacToe.firstStage);
+                stage.centerOnScreen();
 
-                    HLocalController controller = loader.getController();
+                HLocalController controller = loader.getController();
 
-                    stage.showAndWait();
+                stage.showAndWait();
 
-                    // signifying the cancel button was pressed (sssh! it works)
-                    if (stage.getTitle().equals("X")) {
-                        return;
-                    }
-
-                    player1 = controller.getPlayer1();
-                    player2 = controller.getPlayer2();
-                    player1IsX = controller.getPlayer1IsX();
-                    System.out.println("Local 2 player Human Game Starting!" +
-                            PLAYER_1 + player1 + " - " + (player1IsX ? 'X' : 'O') +
-                            PLAYER_2 + player2 + " - " + (player1IsX ? 'O' : 'X'));
-                    // TODO Du stuff with HLocal
+                // signifying the cancel button was pressed (sssh! it works)
+                if (stage.getTitle().equals("X")) {
+                    return;
                 }
-                catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
+
+                player1 = controller.getPlayer1();
+                player2 = controller.getPlayer2();
+                player1IsX = controller.getPlayer1IsX();
+                System.out.println("Local 2 player Human Game Starting!" +
+                        PLAYER_1 + player1 + " - " + (player1IsX ? 'X' : 'O') +
+                        PLAYER_2 + player2 + " - " + (player1IsX ? 'O' : 'X'));
+                // TODO Du stuff with HLocal
+            }
+            catch (IOException ioe) {
+                ioe.printStackTrace();
             }
         });
 
-        hOnline.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource
-                            ("fxml/hOnlineOK.fxml"));
-                    Stage stage = new Stage();
-                    stage.setTitle("Enter Your Name to Start Connection");
-                    Parent root = loader.load();
-                    stage.setScene(new Scene(root, 300, 110));
-                    stage.initModality(Modality.WINDOW_MODAL);
-                    stage.initOwner(TicTacToe.firstStage);
-                    stage.centerOnScreen();
+        hOnline.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource
+                        ("fxml/hOnlineOK.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Enter Your Name to Start Connection");
+                Parent root = loader.load();
+                stage.setScene(new Scene(root, 300, 110));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(TicTacToe.firstStage);
+                stage.centerOnScreen();
 
-                    HOnlineOKController controller = loader.getController();
+                HOnlineOKController controller = loader.getController();
 
-                    stage.showAndWait();
+                stage.showAndWait();
 
-                    // signifying the cancel button was pressed (sssh! it works)
-                    if (stage.getTitle().equals("X")) {
-                        return;
-                    }
-
-                    player1 = controller.getPlayer1();
-                    System.out.println("Networked 2 player game initialized " +
-                            "by: " + player1 +"\n\tWaiting for connections...");
+                // signifying the cancel button was pressed (sssh! it works)
+                if (stage.getTitle().equals("X")) {
+                    return;
                 }
-                catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
+
+                player1 = controller.getPlayer1();
+                System.out.println("Networked 2 player game initialized " +
+                        "by: " + player1 +"\n\tWaiting for connections...");
+            }
+            catch (IOException ioe) {
+                ioe.printStackTrace();
             }
         });
 
-        computer.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.out.println("comp");
-            }
+        computer.setOnAction(event -> {
+            System.out.println("comp");
         });
     }
 
