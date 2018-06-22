@@ -1,13 +1,24 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class HOnlineConnectController {
 
     private GameStyleController parent;
 
-    private String player1;
+    private ConnectionManager manager;
+
+    @FXML
+    private Label yourHost;
+
+    @FXML
+    private Label yourPort;
+
+    @FXML
+    private TextField partnerHost;
+
+    @FXML
+    private TextField partnerPort;
 
     @FXML
     private Label yourName;
@@ -18,13 +29,17 @@ public class HOnlineConnectController {
     @FXML
     private Button connect;
 
-    public void setParent(GameStyleController parent) {
-        this.parent = parent;
-    }
+    private final String INT_ERROR = "Your port must be a java integer " +
+            "between 4569 and 65535";
 
     public void setInitializingPlayerName(String player) {
-        this.player1 = player;
-        yourName.setText(player1);
+        yourName.setText(player);
+    }
+
+    public void setManager(ConnectionManager manager) {
+        this.manager = manager;
+        yourHost.setText(manager.getMyHost());
+        yourPort.setText(Integer.toString(manager.getMyPort()));
     }
 
     @FXML
@@ -36,6 +51,17 @@ public class HOnlineConnectController {
 
         connect.setOnAction(event -> {
             System.out.println("Connecting... has not been implemented yet");
+            try {
+                manager.setPartnerPort(Integer.parseInt(partnerPort.getText()));
+            }
+            catch (NumberFormatException nfe) {
+                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK).showAndWait();
+            }
+            manager.setPartnerHost(partnerHost.getText());
+            Stage stage = (Stage) cancel.getScene().getWindow();
+            stage.setTitle("X");
+            stage.close();
+            manager.iGotYouFirst();
         });
     }
 }

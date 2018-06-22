@@ -132,29 +132,4 @@ public class GameStyleController {
             }
         });
     }
-
-    public void startNetworkedGameNumber1(String player1) {
-        /*
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("fxml/hOnlineConnect.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Wait or Enter Partners Information");
-            Parent root = loader.load();
-            stage.setScene(new Scene(root, 300, 305));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(TicTacToe.firstStage);
-            stage.centerOnScreen();
-
-            HOnlineConnectController controller = loader.getController();
-            controller.setParent(GameStyleController.this);
-            controller.setInitializingPlayerName(player1);
-
-            stage.showAndWait();
-        }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        */
-    }
 }

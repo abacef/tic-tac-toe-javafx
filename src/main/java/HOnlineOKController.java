@@ -23,7 +23,7 @@ public class HOnlineOKController {
         });
 
         ok.setOnAction(event -> {
-            Stage stage = (Stage) ok.getScene().getWindow();
+            Stage stage = (Stage) cancel.getScene().getWindow();
             stage.setTitle("X");
             stage.close();
         });

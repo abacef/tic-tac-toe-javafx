@@ -31,14 +31,14 @@
       </HBox>
       <HBox prefHeight="14.0" prefWidth="270.0">
          <children>
-            <Label text="Your Host: " />
-            <Label />
+            <Label text="Your Host:" />
+            <Label fx:id="yourHost"/>
          </children>
       </HBox>
       <HBox prefHeight="43.0" prefWidth="270.0">
          <children>
             <Label text="Your Port:" />
-            <Label />
+            <Label fx:id="yourPort"/>
          </children>
       </HBox>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="11.0" prefWidth="270.0" spacing="30.0">
