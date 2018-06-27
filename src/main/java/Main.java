@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class TicTacToe extends Application {
+public class Main extends Application {
 
     public static Stage firstStage;
 

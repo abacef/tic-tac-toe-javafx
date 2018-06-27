@@ -29,7 +29,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>TicTacToe</mainClass>
+                    <mainClass>Main</mainClass>
                     <arguments>
                     </arguments>
                 </configuration>

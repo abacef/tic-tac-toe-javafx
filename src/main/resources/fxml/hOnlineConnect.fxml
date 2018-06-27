@@ -7,10 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="305.0" prefWidth="300.0"
-      spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="HOnlineConnectController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HOnlineConnectController">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="270.0">
          <children>
@@ -19,32 +16,32 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0" spacing="10.0">
          <children>
-            <Label prefWidth="70.0" text="Partner Host" />
-            <TextField fx:id="partnerHost" prefHeight="25.0" prefWidth="188.0" />
+            <Label prefWidth="90.0" text="Partner Host" />
+            <TextField fx:id="partnerHost" prefHeight="26.0" prefWidth="188.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0" spacing="10.0">
          <children>
-            <Label prefWidth="70.0" text="Partner Port" />
-            <TextField fx:id="partnerPort" prefHeight="25.0" prefWidth="188.0" />
+            <Label prefWidth="90.0" text="Partner Port" />
+            <TextField fx:id="partnerPort" prefHeight="25.0" prefWidth="188.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <HBox prefHeight="14.0" prefWidth="270.0">
+      <HBox prefHeight="14.0" prefWidth="270.0" spacing="10.0">
          <children>
             <Label text="Your Host:" />
-            <Label fx:id="yourHost"/>
+            <Label fx:id="yourHost" wrapText="true" />
          </children>
       </HBox>
-      <HBox prefHeight="43.0" prefWidth="270.0">
+      <HBox prefHeight="43.0" prefWidth="270.0" spacing="10.0">
          <children>
             <Label text="Your Port:" />
-            <Label fx:id="yourPort"/>
+            <Label fx:id="yourPort" />
          </children>
       </HBox>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="11.0" prefWidth="270.0" spacing="30.0">
          <children>
             <Button fx:id="cancel" mnemonicParsing="false" prefWidth="75.0" text="Cancel" />
-            <Button fx:id="connect" mnemonicParsing="false" prefWidth="75.0" text="Connect" />
+            <Button fx:id="connect" defaultButton="true" mnemonicParsing="false" prefWidth="75.0" text="Connect" />
          </children>
       </HBox>
    </children>

@@ -7,21 +7,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="110.0" prefWidth="300.0"
-      spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="HOnlineOKController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="300.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HOnlineOKController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="270.0" spacing="10.0">
          <children>
-            <Label prefWidth="70.0" text="Your Name" />
-            <TextField fx:id="name" prefWidth="200.0" />
+            <Label prefWidth="90.0" text="Your Name" />
+            <TextField fx:id="name" prefWidth="200.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="2.0" prefWidth="270.0" spacing="30.0">
          <children>
             <Button fx:id="cancel" mnemonicParsing="false" prefWidth="65.0" text="Cancel" />
-            <Button fx:id="ok" mnemonicParsing="false" prefWidth="65.0" text="OK" />
+            <Button fx:id="ok" defaultButton="true" mnemonicParsing="false" prefWidth="65.0" text="OK" />
          </children>
       </HBox>
    </children>

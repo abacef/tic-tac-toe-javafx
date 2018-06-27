@@ -42,7 +42,7 @@ public class UDPReaderThread implements Runnable {
             }
         }
         catch (IOException ioe) {
-            // squash
+            System.out.println("Interrupted");
         }
         finally {
             mailbox.close();

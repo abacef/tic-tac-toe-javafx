@@ -61,18 +61,17 @@ public class StartGame {
             Stage stage = new Stage();
             stage.setTitle("Wait or Enter Partners Information");
             Parent root = loader.load();
-            stage.setScene(new Scene(root, 300, 305));
+            stage.setScene(new Scene(root, 400, 305));
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(TicTacToe.firstStage);
+            stage.initOwner(Main.firstStage);
             stage.centerOnScreen();
-            stage.setResizable(false);
 
             HOnlineConnectController controller = loader.getController();
             controller.setInitializingPlayerName(player1);
 
             // Set up UDP connection
             ConnectionManager manager = new ConnectionManager();
-            manager.setMyHost(InetAddress.getLocalHost().getCanonicalHostName());
+            manager.setMyHost(InetAddress.getLocalHost().getHostName());
             manager.setMyPort(ConnectionManager.STARTING_PORT);
             controller.setManager(manager);
             DatagramSocket mailbox = null;
@@ -88,8 +87,7 @@ public class StartGame {
                     manager.setMyPort(manager.getMyPort() + 1);
                 }
             }
-            Thread reader = new Thread(new UDPReaderThread(mailbox,
-                    manager));
+            Thread reader = new Thread(new UDPReaderThread(mailbox, manager));
             reader.start();
 
             stage.showAndWait();

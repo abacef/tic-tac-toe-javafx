@@ -48,7 +48,7 @@ public class GameStyleController {
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 300));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(TicTacToe.firstStage);
+                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
 
                 HLocalController controller = loader.getController();
@@ -80,7 +80,7 @@ public class GameStyleController {
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(TicTacToe.firstStage);
+                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
                 stage.setResizable(false);
 
@@ -110,7 +110,7 @@ public class GameStyleController {
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(TicTacToe.firstStage);
+                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
                 stage.setResizable(false);
 
