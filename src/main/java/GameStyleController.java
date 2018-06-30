@@ -28,6 +28,14 @@ public class GameStyleController {
 
     private boolean player1IsX;
 
+    /* the stage that the next scene will always reside on */
+    private Stage stage;
+
+    /* the stage that started it all, and plays the game */
+    private Stage primaryStage;
+
+    public static final String COMP = "Computer";
+
     private final String PLAYER_1 = "\nPlayer 1: ";
 
     private final String PLAYER_2 = "\nPlayer 2: ";
@@ -39,31 +47,33 @@ public class GameStyleController {
 
     @FXML
     private void initialize() {
+        stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
         hLocal.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hLocal.fxml"));
-                Stage stage = new Stage();
-                stage.setTitle("2 Player Configuration");
+                stage.setTitle("2 Player Local Configuration");
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 300));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
+                stage.setResizable(false);
 
                 HLocalController controller = loader.getController();
 
                 stage.showAndWait();
 
-                // signifying the cancel button was not pressed (sssh! it works)
-                if (stage.getTitle().equals("X")) {
-                    player1 = controller.getPlayer1();
-                    player2 = controller.getPlayer2();
+                player1 = controller.getPlayer1();
+                player2 = controller.getPlayer2();
+
+                if (player1.length() > 0 && player2.length() > 0) {
                     player1IsX = controller.getPlayer1IsX();
-                    System.out.println("Local 2 player Human Game Starting!" +
-                            PLAYER_1 + player1 + " - " + (player1IsX ? 'X' : 'O') +
-                            PLAYER_2 + player2 + " - " + (player1IsX ? 'O' : 'X'));
-                    StartGame game = new StartGame(false, player1, player2);
+                    System.out.println("Local 2 player Human Game Starting!"
+                            + PLAYER_1 + player1 + " - " + (player1IsX ? 'X'
+                            : 'O') + PLAYER_2 + player2 + " - " + (player1IsX
+                            ? 'O' : 'X'));
+                    startGame();
                 }
             }
             catch (IOException ioe) {
@@ -75,25 +85,23 @@ public class GameStyleController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hOnlineOK.fxml"));
-                Stage stage = new Stage();
                 stage.setTitle(ONLINE_ENTER_NAME);
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
                 stage.setResizable(false);
 
-                HOnlineOKController controller = loader.getController();
+                OKController controller = loader.getController();
 
                 stage.showAndWait();
 
-                // signifying the cancel button was not pressed (sssh! it works)
-                if (stage.getTitle().equals("X")) {
-                    player1 = controller.getPlayer1();
+                player1 = controller.getPlayer1();
+
+                if (player1.length() > 0) {
                     System.out.println("Networked 2 player game initialized " +
                             "by: " + player1 +"\n\tWaiting for connections...");
-                    StartGame game = new StartGame(true, player1, null);
+                    ConnectionManager manager = new ConnectionManager
+                            (primaryStage, player1);
                 }
             }
             catch (IOException ioe) {
@@ -105,31 +113,52 @@ public class GameStyleController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hOnlineOK.fxml"));
-                Stage stage = new Stage();
                 stage.setTitle(COMP_ENTER_NAME);
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.firstStage);
                 stage.centerOnScreen();
                 stage.setResizable(false);
 
-                HOnlineOKController controller = loader.getController();
+                OKController controller = loader.getController();
 
                 stage.showAndWait();
 
-                // signifying the cancel button was not pressed (sssh! it works)
-                if (stage.getTitle().equals("X")) {
-                    player1 = controller.getPlayer1();
+                player1 = controller.getPlayer1();
 
+                // user put nothing (or whitespace) in the text field
+                if (player1.length() > 0) {
                     System.out.println("Computer 2 Player Game Initialized by: "
                             + player1);
-                    StartGame game = new StartGame(false, player1, null);
+                    player2 = COMP; // check for computer
+                    player1IsX = true;
+                    startGame();
                 }
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();
             }
         });
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    private void startGame() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource
+                    ("fxml/gamePlay.fxml"));
+            Parent root = loader.load();
+            primaryStage.setScene(new Scene(root,300, 400));
+            GamePlayController controller = loader.getController();
+            GameModel model = new GameModel(player1, player2, player1IsX);
+            controller.setModel(model);
+            primaryStage.setTitle(model.getPlayer1() + " vs " + model
+                    .getPlayer2());
+            primaryStage.show();
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }

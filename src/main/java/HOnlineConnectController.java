@@ -75,9 +75,8 @@ public class HOnlineConnectController {
 
             manager.setPartnerHost(partnerHost.getText());
             Stage stage = (Stage)cancel.getScene().getWindow();
-            stage.setTitle("X");
             stage.close();
-            manager.iGotYouFirst();
+            System.out.println(manager);
         });
     }
 }

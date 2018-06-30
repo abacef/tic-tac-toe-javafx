@@ -46,7 +46,7 @@
       <HBox alignment="BOTTOM_RIGHT" prefHeight="21.0" prefWidth="277.0" spacing="30.0">
          <children>
             <Button fx:id="cancel" mnemonicParsing="false" prefWidth="65.0" text="Cancel" />
-            <Button fx:id="ok" mnemonicParsing="false" prefWidth="65.0" text="OK" />
+            <Button fx:id="ok" defaultButton="true" mnemonicParsing="false" prefWidth="65.0" text="OK" />
          </children>
       </HBox>
    </children>

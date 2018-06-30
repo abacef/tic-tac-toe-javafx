@@ -24,15 +24,8 @@ public class HLocalController {
 
     private ToggleGroup group;
 
-    private final Alert player1EmptyAlert = new Alert(Alert.AlertType.ERROR,
-            "Please enter a name for player 1",
-            ButtonType.OK);
-
-    private final Alert player2EmptyAlert = new Alert(Alert.AlertType.ERROR,
-            "Please enter a name for player 2",
-            ButtonType.OK);
-
-    private GameStyleController parent;
+    private Alert alert = new Alert(Alert.AlertType.ERROR, "players names " +
+            "must contain characters");
 
     @FXML
     private void initialize() {
@@ -51,28 +44,22 @@ public class HLocalController {
         oRadio.setUserData("o");
 
         ok.setOnAction(event -> {
-            if (player1.getText().equals("")) {
-                player1EmptyAlert.showAndWait();
+            if (!(player1.getText().trim().length() > 0 || player2.getText()
+                    .trim().length() > 0)) {
+                alert.showAndWait();
                 return;
             }
-
-            if (player2.getText().equals("")) {
-                player2EmptyAlert.showAndWait();
-                return;
-            }
-
             Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.setTitle("X");
             stage.close();
         });
     }
 
     public String getPlayer1() {
-        return player1.getText();
+        return player1.getText().trim();
     }
 
     public String getPlayer2() {
-        return player2.getText();
+        return player2.getText().trim();
     }
 
     public boolean getPlayer1IsX() {

@@ -7,11 +7,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static Stage firstStage;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        firstStage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/gameStyle.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 300, 400);
@@ -21,6 +18,8 @@ public class Main extends Application {
         primaryStage.setTitle("Select Gameplay Method");
         primaryStage.centerOnScreen();
         primaryStage.show();
+        GameStyleController controller = loader.getController();
+        controller.setPrimaryStage(primaryStage);
     }
 
     public static void main(String[] args) {
