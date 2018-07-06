@@ -1,6 +1,13 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
 
 public class HOnlineConnectController {
 
@@ -27,12 +34,16 @@ public class HOnlineConnectController {
     @FXML
     private Button connect;
 
+    private final int LOWEST_PORT = 4569;
+
+    private final int HIGHEST_PORT = 9999;
+
     private final String NO_HOST_ENTERED = "Please Enter a Host";
 
     private final String NO_PORT_ENTERED = "Please Enter a Port";
 
     private final String INT_ERROR = "Your port must be a java integer " +
-            "between 4569 and 65535";
+            "between " + LOWEST_PORT + " and " + HIGHEST_PORT;
 
     public void setInitializingPlayerName(String player) {
         yourName.setText(player);
@@ -47,6 +58,14 @@ public class HOnlineConnectController {
     @FXML
     private void initialize() {
         cancel.setOnAction(event -> {
+            DatagramPacket packet = new DatagramPacket(new byte[]
+                    {'Q'}, 1, manager.getMyAddress());
+            try {
+                manager.getMyMailbox().send(packet);
+            }
+            catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
             Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
         });
@@ -65,16 +84,26 @@ public class HOnlineConnectController {
                 return;
             }
 
+            int partnerPortInt;
             try {
-                manager.setPartnerPort(Integer.parseInt(partnerPort.getText()));
+                 partnerPortInt = Integer.parseInt(partnerPort.getText());
             }
             catch (NumberFormatException nfe) {
-                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK).showAndWait();
+                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK)
+                        .showAndWait();
                 return;
             }
 
+            if (partnerPortInt < LOWEST_PORT || partnerPortInt > HIGHEST_PORT) {
+                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK)
+                        .showAndWait();
+                return;
+            }
+
+            manager.setPartnerPort(partnerPortInt);
+
             manager.setPartnerHost(partnerHost.getText());
-            Stage stage = (Stage)cancel.getScene().getWindow();
+            Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
             System.out.println(manager);
         });

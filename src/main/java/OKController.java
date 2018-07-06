@@ -1,5 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,12 +18,10 @@ public class OKController {
 
     @FXML
     private void initialize() {
-        EventHandler<ActionEvent> doneHandler = event -> {
+        cancel.setOnAction(event -> {
             Stage stage = (Stage)cancel.getScene().getWindow();
             stage.close();
-        };
-
-        cancel.setOnAction(doneHandler);
+        });
 
         ok.setOnAction(event -> {
             if (!(name.getText().trim().length() > 0)) {

@@ -1,10 +1,7 @@
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -25,6 +22,8 @@ public class ConnectionManager {
 
     private DatagramSocket myMailbox;
 
+    private InetSocketAddress myAddress;
+
     public ConnectionManager(Stage primaryStage, String player1) {
         try {
             myHost = InetAddress.getLocalHost().getHostName();
@@ -34,7 +33,7 @@ public class ConnectionManager {
         }
         myPort = STARTING_PORT;
 
-        InetSocketAddress myAddress = new InetSocketAddress(myHost, myPort);
+        myAddress = new InetSocketAddress(myHost, myPort);
         myMailbox = null;
         boolean success = false;
         while (!success) {
@@ -58,14 +57,7 @@ public class ConnectionManager {
             stage.setTitle("Wait or Enter Partners Information");
             Parent root = loader.load();
             stage.setScene(new Scene(root, 400, 305));
-            stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(primaryStage);
-            stage.centerOnScreen();
-
-            HOnlineConnectController controller = loader.getController();
-            controller.setInitializingPlayerName(player1);
-            controller.setManager(this);
-
             stage.setOnCloseRequest(event -> {
                 DatagramPacket packet = new DatagramPacket(new byte[]
                         {'Q'}, 1, myAddress);
@@ -76,6 +68,10 @@ public class ConnectionManager {
                     ioe.printStackTrace();
                 }
             });
+
+            HOnlineConnectController controller = loader.getController();
+            controller.setInitializingPlayerName(player1);
+            controller.setManager(this);
 
             stage.showAndWait();
         }
@@ -101,10 +97,15 @@ public class ConnectionManager {
                     switch (b) {
                         case 'H':
                             partnerHost = in.readUTF();
+                            System.out.println("\tYour partner's host is " +
+                                    partnerHost);
                             break;
                         case 'P':
                             partnerPort = in.readInt();
+                            System.out.println("\tYour partner's port is " +
+                                    partnerPort);
                         case 'Q':
+                            System.out.println("\tClosing connection");
                             break forever;
                         default:
                             System.err.println("Bad Message");
@@ -113,12 +114,20 @@ public class ConnectionManager {
                 }
             }
             catch (IOException ioe) {
-                System.out.println("Interrupted");
+                System.out.println("Interrupted?!?!?!?!??");
             }
             finally {
                 myMailbox.close();
             }
         }
+    }
+
+    public InetSocketAddress getMyAddress() {
+        return myAddress;
+    }
+
+    public DatagramSocket getMyMailbox() {
+        return myMailbox;
     }
 
     public String getMyHost() {

@@ -47,13 +47,13 @@ public class GameStyleController {
 
     @FXML
     private void initialize() {
-        stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
         hLocal.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hLocal.fxml"));
+                stage = new Stage();
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
                 stage.setTitle("2 Player Local Configuration");
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 300));
@@ -85,6 +85,9 @@ public class GameStyleController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hOnlineOK.fxml"));
+                stage = new Stage();
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
                 stage.setTitle(ONLINE_ENTER_NAME);
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
@@ -102,6 +105,8 @@ public class GameStyleController {
                             "by: " + player1 +"\n\tWaiting for connections...");
                     ConnectionManager manager = new ConnectionManager
                             (primaryStage, player1);
+                    // will have been connected at this point
+
                 }
             }
             catch (IOException ioe) {
@@ -113,6 +118,9 @@ public class GameStyleController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource
                         ("fxml/hOnlineOK.fxml"));
+                stage = new Stage();
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
                 stage.setTitle(COMP_ENTER_NAME);
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 300, 110));
