@@ -38,7 +38,6 @@ solidify my knowledge of TCP and UDP applications.
 #### JavaFX
 I want to experiment with some interesting parts of javaFX like:
 - Having multiple windows on the screen at once
-- Same FXML file, different controller
 - 
 
 ## Design Patterns

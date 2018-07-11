@@ -17,13 +17,7 @@ public class HOnlineConnectController {
     private Label yourHost;
 
     @FXML
-    private Label yourPort;
-
-    @FXML
     private TextField partnerHost;
-
-    @FXML
-    private TextField partnerPort;
 
     @FXML
     private Label yourName;
@@ -34,16 +28,7 @@ public class HOnlineConnectController {
     @FXML
     private Button connect;
 
-    private final int LOWEST_PORT = 4569;
-
-    private final int HIGHEST_PORT = 9999;
-
     private final String NO_HOST_ENTERED = "Please Enter a Host";
-
-    private final String NO_PORT_ENTERED = "Please Enter a Port";
-
-    private final String INT_ERROR = "Your port must be a java integer " +
-            "between " + LOWEST_PORT + " and " + HIGHEST_PORT;
 
     public void setInitializingPlayerName(String player) {
         yourName.setText(player);
@@ -52,7 +37,6 @@ public class HOnlineConnectController {
     public void setManager(ConnectionManager manager) {
         this.manager = manager;
         yourHost.setText(manager.getMyHost());
-        yourPort.setText(Integer.toString(manager.getMyPort()));
     }
 
     @FXML
@@ -78,34 +62,9 @@ public class HOnlineConnectController {
                 return;
             }
 
-            if (partnerPort.getText().equals("")) {
-                new Alert(Alert.AlertType.ERROR, NO_PORT_ENTERED, ButtonType
-                        .OK).showAndWait();
-                return;
-            }
-
-            int partnerPortInt;
-            try {
-                 partnerPortInt = Integer.parseInt(partnerPort.getText());
-            }
-            catch (NumberFormatException nfe) {
-                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK)
-                        .showAndWait();
-                return;
-            }
-
-            if (partnerPortInt < LOWEST_PORT || partnerPortInt > HIGHEST_PORT) {
-                new Alert(Alert.AlertType.ERROR, INT_ERROR, ButtonType.OK)
-                        .showAndWait();
-                return;
-            }
-
-            manager.setPartnerPort(partnerPortInt);
-
             manager.setPartnerHost(partnerHost.getText());
             Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
-            System.out.println(manager);
         });
     }
 }

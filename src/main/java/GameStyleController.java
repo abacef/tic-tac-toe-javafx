@@ -106,7 +106,6 @@ public class GameStyleController {
                     ConnectionManager manager = new ConnectionManager
                             (primaryStage, player1);
                     // will have been connected at this point
-
                 }
             }
             catch (IOException ioe) {

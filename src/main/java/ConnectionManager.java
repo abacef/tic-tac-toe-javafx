@@ -7,10 +7,11 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.*;
+import java.util.Enumeration;
 
 public class ConnectionManager {
 
-    private static final int STARTING_PORT = 4570;
+    private static final int PORT_80 = 80;
 
     private String partnerHost;
 
@@ -25,26 +26,7 @@ public class ConnectionManager {
     private InetSocketAddress myAddress;
 
     public ConnectionManager(Stage primaryStage, String player1) {
-        try {
-            myHost = InetAddress.getLocalHost().getHostName();
-        }
-        catch (UnknownHostException uhe) {
-            uhe.printStackTrace();
-        }
-        myPort = STARTING_PORT;
-
-        myAddress = new InetSocketAddress(myHost, myPort);
-        myMailbox = null;
-        boolean success = false;
-        while (!success) {
-            try {
-                myMailbox = new DatagramSocket(myAddress);
-                success = true;
-            }
-            catch (SocketException se) {
-                myPort++;
-            }
-        }
+        myHost = retreiveMyIPAddress();
 
         Thread reader = new Thread(new UDPReaderThread());
         reader.start();
@@ -78,6 +60,28 @@ public class ConnectionManager {
         catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    public String retreiveMyIPAddress() {
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface
+                    .getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+                // filters out 127.0.0.1 and inactive interfaces
+                if (iface.isLoopback() || !iface.isUp())
+                    continue;
+
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    return addr.getHostAddress();
+                }
+            }
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     private class UDPReaderThread implements Runnable {
