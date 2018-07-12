@@ -70,4 +70,6 @@ public interface ViewListener
 	public void quit
     (ModelListener view);
 
+	public void connect(String host);
+
 	}

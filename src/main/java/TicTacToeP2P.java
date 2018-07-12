@@ -64,15 +64,25 @@ public class TicTacToeP2P {
                 serversocket.bind(new InetSocketAddress(LOCALHOST, PORT_80));
 
                 // Set up model and view.
-                TicTacToeModel model = new TicTacToeModel();
+                GameModel model = new GameModel();
                 view.setListener (model);
 
                 // Tell model I joined the game.
-                model.join (view, name);
+                model.join(view, name);
 
                 // Accept a connection from the "client" peer.
                 socket = serversocket.accept();
                 serversocket.close();
+
+                try {
+                    wait();
+                }
+                catch (InterruptedException ie) {
+                    socket = new Socket();
+                    socket.connect(new InetSocketAddress(model.getPartnerHost(),
+                            PORT_80));
+                }
+                System.out.println("\tconnected");
 
                 // Set up view proxy object.
                 ViewProxy proxy = new ViewProxy(socket);

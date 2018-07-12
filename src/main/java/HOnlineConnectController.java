@@ -78,9 +78,13 @@ public class HOnlineConnectController {
 
             Socket socket = new Socket();
             try {
-                socket.connect(new InetSocketAddress(partnerHostGotten,
+                socket.connect(new InetSocketAddress(TicTacToeP2P.LOCALHOST,
                         TicTacToeP2P.PORT_80));
-                new DataOutputStream(socket.getOutputStream()).writeByte('C');
+                socket.setTcpNoDelay(true);
+                DataOutputStream out = new DataOutputStream(socket
+                        .getOutputStream());
+                out.writeByte('J');
+                out.writeUTF(partnerHostGotten);
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();

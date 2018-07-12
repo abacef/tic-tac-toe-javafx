@@ -8,7 +8,8 @@ import java.net.Socket;
  * Class ViewProxy provides the view proxy for the Tic-Tac-Toe Game. It
  * implements the server side of the client-server network communication.
  *
- * @author  Alan Kaminsky
+ * Mark's revisions: added a case c to the reader thread in order to
+ * @author  Alan Kaminsky, Mark Nash
  * @version 26-Feb-2018
  */
 public class ViewProxy
@@ -247,23 +248,20 @@ public class ViewProxy
 	 * Class ReaderThread receives messages from the network, decodes them, and
 	 * invokes the proper methods to process them.
 	 */
-	private class ReaderThread
-		extends Thread
-		{
+	private class ReaderThread extends Thread {
 		/**
 		 * Run the reader thread.
 		 */
-		public void run()
-			{
+		public void run() {
 			int op, i;
 			String name;
-			try
-				{
-				for (;;)
-					{
+			try {
+				for (;;) {
 					op = in.readByte();
-					switch (op)
-						{
+					switch(op) {
+						case 'C':
+							name = in.readUTF();
+							listener.connect(name);
 						case 'J':
 							name = in.readUTF();
 							listener.join (ViewProxy.this, name);
@@ -281,28 +279,25 @@ public class ViewProxy
 						default:
 							error ("Bad message");
 							break;
-						}
-					}
-				}
-			catch (EOFException exc)
-				{
-				}
-			catch (IOException exc)
-				{
-				error (exc);
-				}
-			finally
-				{
-				try
-					{
-					socket.close();
-					}
-				catch (IOException exc)
-					{
 					}
 				}
 			}
+			catch (EOFException exc) {
+
+			}
+			catch (IOException exc) {
+				error (exc);
+			}
+			finally {
+				try {
+					socket.close();
+				}
+				catch (IOException exc) {
+
+				}
+			}
 		}
+	}
 
 // Hidden operations.
 

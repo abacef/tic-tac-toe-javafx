@@ -74,6 +74,7 @@ public class GameStyleController {
                             : 'O') + PLAYER_2 + player2 + " - " + (player1IsX
                             ? 'O' : 'X'));
                     startGame();
+                    primaryStage.show();
                 }
             }
             catch (IOException ioe) {
@@ -110,11 +111,13 @@ public class GameStyleController {
                 root = loader.load();
                 stage.setScene(new Scene(root, 400, 305));
                 stage.initOwner(primaryStage);
-                new TicTacToeP2P(player1).go();
+                TicTacToeP2P game = new TicTacToeP2P(player1);
+                game.setView(startGame());
+                game.go();
+                primaryStage.showAndWait();
 
-
-                ConnectionManager manager = new ConnectionManager
-                            (primaryStage, player1);
+                //ConnectionManager manager = new ConnectionManager
+                            //(primaryStage, player1);
                     // will have been connected at this point
             }
             catch (IOException ioe) {
@@ -148,6 +151,7 @@ public class GameStyleController {
                     player2 = COMP; // check for computer
                     player1IsX = true;
                     startGame();
+                    primaryStage.show();
                 }
             }
             catch (IOException ioe) {
@@ -160,21 +164,25 @@ public class GameStyleController {
         this.primaryStage = primaryStage;
     }
 
-    private void startGame() {
+    private GamePlayController startGame() {
+        GamePlayController controller = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
                     ("fxml/gamePlay.fxml"));
             Parent root = loader.load();
             primaryStage.setScene(new Scene(root,300, 400));
-            GamePlayController controller = loader.getController();
-            GameModel model = new GameModel(player1, player2, player1IsX);
+            controller = loader.getController();
+            GameModel model = new GameModel();
+            model.join(controller, player1);
+            model.join(controller, player2);
+            model.setPlayer1IsX(player1IsX);
             controller.setModel(model);
             primaryStage.setTitle(model.getPlayer1() + " vs " + model
                     .getPlayer2());
-            primaryStage.show();
         }
         catch (IOException ioe) {
             ioe.printStackTrace();
         }
+        return controller;
     }
 }
