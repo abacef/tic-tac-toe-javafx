@@ -26,7 +26,7 @@ public class OKController {
         ok.setOnAction(event -> {
             if (!(name.getText().trim().length() > 0)) {
                 new Alert(Alert.AlertType.ERROR, "Your name must " +
-                        "contain" + "characters", ButtonType.OK).showAndWait();
+                        "contain characters", ButtonType.OK).showAndWait();
                 return;
             }
             Stage stage = (Stage)cancel.getScene().getWindow();

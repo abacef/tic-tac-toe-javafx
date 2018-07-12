@@ -100,13 +100,22 @@ public class GameStyleController {
 
                 player1 = controller.getPlayer1();
 
-                if (player1.length() > 0) {
-                    System.out.println("Networked 2 player game initialized " +
-                            "by: " + player1 +"\n\tWaiting for connections...");
-                    ConnectionManager manager = new ConnectionManager
+                System.out.println("Networked 2 player game initialized " +
+                        "by: " + player1 +"\n\tWaiting for connections...");
+
+                loader = new FXMLLoader(getClass().getResource
+                        ("fxml/hOnlineConnect.fxml"));
+                stage = new Stage();
+                stage.setTitle("Wait or Enter Partners Information");
+                root = loader.load();
+                stage.setScene(new Scene(root, 400, 305));
+                stage.initOwner(primaryStage);
+                new TicTacToeP2P(player1).go();
+
+
+                ConnectionManager manager = new ConnectionManager
                             (primaryStage, player1);
                     // will have been connected at this point
-                }
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();
