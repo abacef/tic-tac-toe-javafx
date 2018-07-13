@@ -14,7 +14,7 @@ public class TicTacToeP2P {
     public static final String LOCALHOST = "localhost";
 
     public TicTacToeP2P(String name) {
-        this.host = null;
+        this.host = "Bogous Host";
         this.name = name;
     }
 
@@ -65,13 +65,15 @@ public class TicTacToeP2P {
 
                 // Set up model and view.
                 GameModel model = new GameModel();
-                view.setListener (model);
+                view.setListener(model);
 
                 // Tell model I joined the game.
                 model.join(view, name);
 
                 // Accept a connection from the "client" peer.
+                System.out.println("waiting for acception");
                 socket = serversocket.accept();
+                System.out.println("acceptioned");
                 serversocket.close();
 
                 try {

@@ -48,10 +48,14 @@ public class HOnlineConnectController {
     private void initialize() {
         yourHost.setText(getMyHost());
         cancel.setOnAction(event -> {
-            DatagramPacket packet = new DatagramPacket(new byte[]
-                    {'Q'}, 1, manager.getMyAddress());
+            Socket socket = new Socket();
             try {
-                manager.getMyMailbox().send(packet);
+                socket.connect(new InetSocketAddress(TicTacToeP2P.LOCALHOST,
+                        TicTacToeP2P.PORT_80));
+                socket.setTcpNoDelay(true);
+                DataOutputStream out = new DataOutputStream(socket
+                        .getOutputStream());
+                out.writeByte('Q');
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();
@@ -83,7 +87,7 @@ public class HOnlineConnectController {
                 socket.setTcpNoDelay(true);
                 DataOutputStream out = new DataOutputStream(socket
                         .getOutputStream());
-                out.writeByte('J');
+                out.writeByte('C');
                 out.writeUTF(partnerHostGotten);
             }
             catch (IOException ioe) {

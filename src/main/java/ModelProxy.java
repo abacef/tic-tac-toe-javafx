@@ -73,6 +73,11 @@ public class ModelProxy
 			}
 		}
 
+
+		public void connect(String c) {
+
+		}
+
 // Exported operations.
 
 	/**
@@ -204,9 +209,6 @@ public class ModelProxy
 						case 'C':
 							i = in.readByte();
 							listener.setWin (i);
-							break;
-						case 'P':
-							listener.waitingForPartner();
 							break;
 						case 'T':
 							listener.yourTurn();

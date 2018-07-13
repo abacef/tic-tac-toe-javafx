@@ -52,6 +52,10 @@ public class TicTacToeModel
 		{
 		}
 
+		public void connect(String c) {
+
+		}
+
 // Exported operations.
 
 	/**
@@ -68,7 +72,6 @@ public class TicTacToeModel
 			{
 			name1 = name;
 			view1 = view;
-			view1.waitingForPartner();
 			}
 		else
 			{

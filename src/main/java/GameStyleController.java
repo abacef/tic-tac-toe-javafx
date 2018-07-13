@@ -111,14 +111,32 @@ public class GameStyleController {
                 root = loader.load();
                 stage.setScene(new Scene(root, 400, 305));
                 stage.initOwner(primaryStage);
+                stage.centerOnScreen();
+                // wait to show and wait till after the model
+                // (GamePlayController) is set
+
+                loader = new FXMLLoader(getClass().getResource
+                        ("fxml/gamePlay.fxml"));
+                root = loader.load();
+                GamePlayController view = loader.getController();
+                GameModel model = new GameModel();
+                model.join(view, player1);
+                model.join(view, player2);
+                model.setPlayer1IsX(player1IsX);
+                view.setModel(model);
                 TicTacToeP2P game = new TicTacToeP2P(player1);
-                game.setView(startGame());
+                game.setView(view);
                 game.go();
-                primaryStage.showAndWait();
+////////////////////////////////////////////////
+                stage.showAndWait();
+
+                primaryStage.setTitle(model.getPlayer1() + " vs " + model
+                        .getPlayer2());
+                primaryStage.setScene(new Scene(root,300, 400));
+                // will have been connected at this point
 
                 //ConnectionManager manager = new ConnectionManager
                             //(primaryStage, player1);
-                    // will have been connected at this point
             }
             catch (IOException ioe) {
                 ioe.printStackTrace();
@@ -164,14 +182,13 @@ public class GameStyleController {
         this.primaryStage = primaryStage;
     }
 
-    private GamePlayController startGame() {
-        GamePlayController controller = null;
+    private void startGame() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
                     ("fxml/gamePlay.fxml"));
             Parent root = loader.load();
             primaryStage.setScene(new Scene(root,300, 400));
-            controller = loader.getController();
+            GamePlayController controller = loader.getController();
             GameModel model = new GameModel();
             model.join(controller, player1);
             model.join(controller, player2);
@@ -183,6 +200,5 @@ public class GameStyleController {
         catch (IOException ioe) {
             ioe.printStackTrace();
         }
-        return controller;
     }
 }

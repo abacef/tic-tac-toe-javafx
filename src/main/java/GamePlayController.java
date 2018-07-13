@@ -46,10 +46,12 @@ public class GamePlayController implements ModelListener {
 
     }
 
+    /*
     @Override
     public void waitingForPartner() {
 
     }
+    */
 
     @Override
     public void yourTurn() {
@@ -78,6 +80,6 @@ public class GamePlayController implements ModelListener {
 
     @Override
     public void quit() {
-
+        System.exit(0);
     }
 }

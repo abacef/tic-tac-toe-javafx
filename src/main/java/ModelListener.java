@@ -33,10 +33,13 @@ public interface ModelListener
 	public void setWin
     (int i);
 
+
 	/**
 	 * Report that the player is waiting for a partner.
 	 */
+	/*
 	public void waitingForPartner();
+	*/
 
 	/**
 	 * Report that it's the player's turn.
