@@ -274,10 +274,6 @@ public class ViewProxy
 							listener.newGame (ViewProxy.this);
 							break;
 						case 'Q':
-							synchronized (this) {
-								System.out.println("notifyingAll");
-								notifyAll();
-							}
 							break foreverFor;
 						default:
 							error ("Bad message");

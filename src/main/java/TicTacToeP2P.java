@@ -82,18 +82,18 @@ public class TicTacToeP2P implements Runnable {
                 synchronized (TicTacToeP2P.this) {
                     try {
                         System.out.println("waiting");
-                        wait();
+                        wait(1000);
                     } catch (InterruptedException ie) {
-                        System.out.println("doneWaiting");
-                        if (model.getPartnerHost() == null) {
-                            System.out.println("Returning");
-                            return;
-                        }
-                        socket = new Socket();
-                        socket.connect(new InetSocketAddress(model.getPartnerHost(),
-                                PORT_80));
+
                     }
                 }
+                System.out.println("doneWaiting");
+                if (model.getPartnerHost() == null) {
+                    return;
+                }
+                socket = new Socket();
+                socket.connect(new InetSocketAddress(model.getPartnerHost(),
+                        PORT_80));
                 System.out.println("\tconnected");
             }
         }
