@@ -114,13 +114,14 @@ public class HOnlineConnectController {
                     continue;
 
                 Enumeration<InetAddress> addresses = iface.getInetAddresses();
-                String fin = addresses.nextElement().getHostAddress();
-                System.out.println(fin);
                 while (addresses.hasMoreElements()) {
-                    InetAddress addr = addresses.nextElement();
-                    System.out.println(addr.getHostAddress());
+                    String hostAddress = addresses.nextElement()
+                            .getHostAddress();
+                    System.out.println(hostAddress);
+                    if (hostAddress.length() < 16) {
+                        return hostAddress;
+                    }
                 }
-                return fin;
             }
         }
         catch (SocketException e) {
