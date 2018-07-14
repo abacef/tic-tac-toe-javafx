@@ -1,3 +1,4 @@
+import ip_address.GetHost;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
@@ -46,7 +47,7 @@ public class HOnlineConnectController {
 
     @FXML
     private void initialize() {
-        yourHost.setText(getMyHost());
+        yourHost.setText(TicTacToeP2P.LOCALHOST);
         cancel.setOnAction(event -> {
             Socket socket = new Socket();
             try {
@@ -74,7 +75,7 @@ public class HOnlineConnectController {
             }
 
             if (partnerHostGotten.equals(TicTacToeP2P.LOCALHOST) ||
-                    partnerHostGotten.equals(getMyHost())) {
+                    partnerHostGotten.equals(yourHost.getText())) {
                 new Alert(Alert.AlertType.ERROR, NO_LOCALHOST, ButtonType
                         .OK).showAndWait();
                 return;
@@ -101,34 +102,5 @@ public class HOnlineConnectController {
             Stage stage = (Stage)cancel.getScene().getWindow();
             stage.close();
         });
-    }
-
-    private String getMyHost() {
-        try {
-            Enumeration<NetworkInterface> interfaces = NetworkInterface
-                    .getNetworkInterfaces();
-            while (interfaces.hasMoreElements()) {
-                NetworkInterface iface = interfaces.nextElement();
-                // filters out 127.0.0.1 and inactive interfaces
-                if (iface.isLoopback() || !iface.isUp())
-                    continue;
-
-                Enumeration<InetAddress> addresses = iface.getInetAddresses();
-                while (addresses.hasMoreElements()) {
-                    String hostAddress = addresses.nextElement()
-                            .getHostAddress();
-                    System.out.println(hostAddress);
-                    if (hostAddress.length() < 16) {
-                        return hostAddress;
-                    }
-                }
-            }
-        }
-        catch (SocketException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("Huh! It seems you are not connected to the " +
-                "internet");
-        return null;
     }
 }

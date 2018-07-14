@@ -1,3 +1,5 @@
+import ip_address.GetHost;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -11,7 +13,7 @@ public class TicTacToeP2P implements Runnable {
 
     public static final int PORT_80 = 80;
 
-    public static final String LOCALHOST = "localhost";
+    public static final String LOCALHOST = new GetHost().getMyHost();
 
     public TicTacToeP2P(String name, boolean stringIsHost) {
         if (stringIsHost) {
