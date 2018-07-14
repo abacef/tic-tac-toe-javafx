@@ -80,6 +80,8 @@ public class HOnlineConnectController {
                 return;
             }
 
+            new TicTacToeP2P(partnerHostGotten, true).run();
+            /*
             Socket socket = new Socket();
             try {
                 socket.connect(new InetSocketAddress(TicTacToeP2P.LOCALHOST,
@@ -93,6 +95,7 @@ public class HOnlineConnectController {
             catch (IOException ioe) {
                 ioe.printStackTrace();
             }
+            */
 
             manager.setPartnerHost(partnerHost.getText());
             Stage stage = (Stage)cancel.getScene().getWindow();

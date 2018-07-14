@@ -124,7 +124,7 @@ public class GameStyleController {
                 model.join(view, player2);
                 model.setPlayer1IsX(player1IsX);
                 view.setListener(model);
-                TicTacToeP2P game = new TicTacToeP2P(player1);
+                TicTacToeP2P game = new TicTacToeP2P(player1, false);
                 game.setView(view);
                 new Thread(game).start();
                 stage.showAndWait();

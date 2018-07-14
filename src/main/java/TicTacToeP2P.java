@@ -13,18 +13,14 @@ public class TicTacToeP2P implements Runnable {
 
     public static final String LOCALHOST = "localhost";
 
-    public TicTacToeP2P(String name) {
-        this.host = "Bogous Host";
-        this.name = name;
-    }
-
-    /**
-     * Called when a partners host has been input. on the main UI
-     * @param partnerHost
-     */
-    public TicTacToeP2P(String partnerHost, String name) {
-        this.host = partnerHost;
-        this.name = name;
+    public TicTacToeP2P(String name, boolean stringIsHost) {
+        if (stringIsHost) {
+            this.host = name;
+        }
+        else {
+            this.host = "Bogous Host";
+            this.name = name;
+        }
     }
 
     public void setView(GamePlayController view) {
@@ -79,6 +75,7 @@ public class TicTacToeP2P implements Runnable {
                 ViewProxy proxy = new ViewProxy(socket);
                 proxy.setListener(model);
 
+                /*
                 synchronized (TicTacToeP2P.this) {
                     try {
                         System.out.println("waiting");
@@ -95,6 +92,7 @@ public class TicTacToeP2P implements Runnable {
                 socket.connect(new InetSocketAddress(model.getPartnerHost(),
                         PORT_80));
                 System.out.println("\tconnected");
+                */
             }
         }
         catch (IOException ioe) {
