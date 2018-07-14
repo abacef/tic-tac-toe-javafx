@@ -123,12 +123,12 @@ public class GameStyleController {
                 model.join(view, player1);
                 model.join(view, player2);
                 model.setPlayer1IsX(player1IsX);
-                view.setModel(model);
+                view.setListener(model);
                 TicTacToeP2P game = new TicTacToeP2P(player1);
                 game.setView(view);
-                game.go();
-////////////////////////////////////////////////
+                new Thread(game).start();
                 stage.showAndWait();
+
 
                 primaryStage.setTitle(model.getPlayer1() + " vs " + model
                         .getPlayer2());
@@ -193,7 +193,7 @@ public class GameStyleController {
             model.join(controller, player1);
             model.join(controller, player2);
             model.setPlayer1IsX(player1IsX);
-            controller.setModel(model);
+            controller.setListener(model);
             primaryStage.setTitle(model.getPlayer1() + " vs " + model
                     .getPlayer2());
         }

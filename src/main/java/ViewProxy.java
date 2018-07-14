@@ -256,7 +256,7 @@ public class ViewProxy
 			int op, i;
 			String name;
 			try {
-				for (;;) {
+				foreverFor: for (;;) {
 					op = in.readByte();
 					switch(op) {
 						case 'C':
@@ -274,8 +274,11 @@ public class ViewProxy
 							listener.newGame (ViewProxy.this);
 							break;
 						case 'Q':
-							listener.quit (ViewProxy.this);
-							break;
+							synchronized (this) {
+								System.out.println("notifyingAll");
+								notifyAll();
+							}
+							break foreverFor;
 						default:
 							error ("Bad message");
 							break;

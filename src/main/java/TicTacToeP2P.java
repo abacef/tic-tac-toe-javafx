@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.net.*;
 
-public class TicTacToeP2P {
+public class TicTacToeP2P implements Runnable {
 
     private String host;
 
@@ -31,7 +31,8 @@ public class TicTacToeP2P {
         this.view = view;
     }
 
-    public void go() {
+    @Override
+    public void run() {
         try {
             boolean iAmClient;
             Socket socket = new Socket();
@@ -71,24 +72,29 @@ public class TicTacToeP2P {
                 model.join(view, name);
 
                 // Accept a connection from the "client" peer.
-                System.out.println("waiting for acception");
                 socket = serversocket.accept();
-                System.out.println("acceptioned");
                 serversocket.close();
-
-                try {
-                    wait();
-                }
-                catch (InterruptedException ie) {
-                    socket = new Socket();
-                    socket.connect(new InetSocketAddress(model.getPartnerHost(),
-                            PORT_80));
-                }
-                System.out.println("\tconnected");
 
                 // Set up view proxy object.
                 ViewProxy proxy = new ViewProxy(socket);
                 proxy.setListener(model);
+
+                synchronized (TicTacToeP2P.this) {
+                    try {
+                        System.out.println("waiting");
+                        wait();
+                    } catch (InterruptedException ie) {
+                        System.out.println("doneWaiting");
+                        if (model.getPartnerHost() == null) {
+                            System.out.println("Returning");
+                            return;
+                        }
+                        socket = new Socket();
+                        socket.connect(new InetSocketAddress(model.getPartnerHost(),
+                                PORT_80));
+                    }
+                }
+                System.out.println("\tconnected");
             }
         }
         catch (IOException ioe) {

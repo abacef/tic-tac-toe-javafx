@@ -1,5 +1,7 @@
 import javafx.fxml.FXML;
 
+
+// view
 public class GamePlayController implements ModelListener {
 
     private GameModel model;
@@ -9,6 +11,11 @@ public class GamePlayController implements ModelListener {
     private String theirName;
 
     private ViewListener listener;
+
+    @FXML
+    private void initialize() {
+        // cosas
+    }
 
     public void setMyName(String name) {
         this.myName = name;
@@ -20,15 +27,6 @@ public class GamePlayController implements ModelListener {
 
     public void setListener(ViewListener listener) {
         this.listener = listener;
-    }
-
-    @FXML
-    private void initialize() {
-        // cosas
-    }
-
-    public void setModel(GameModel model) {
-        this.model = model;
     }
 
     @Override
